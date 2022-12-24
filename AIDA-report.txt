@@ -1,0 +1,896 @@
+AIDA64 for Android v1.88 Report
+
+<<< System >>>
+
+Manufacturer: rockchip
+Model: rk3399
+Brand: rockchip
+Board: rk30sdk
+Device: rk3399
+Hardware: rk30board
+Platform: rk3399
+Product: rk3399
+Serial: 9DL983KGNR
+Installed RAM: 4 GB
+Total Memory: 3844 MB
+Available Memory: 2588 MB
+Internal Storage Total Space: 10068 MB
+Internal Storage Free Space: 9519 MB
+Bluetooth Version: 4+
+Device Features: android.hardware.audio.output
+android.hardware.bluetooth
+android.hardware.bluetooth_le
+android.hardware.camera
+android.hardware.camera.any
+android.hardware.camera.autofocus
+android.hardware.camera.front
+android.hardware.faketouch
+android.hardware.location
+android.hardware.location.network
+android.hardware.microphone
+android.hardware.opengles.aep
+android.hardware.ram.normal
+android.hardware.screen.landscape
+android.hardware.screen.portrait
+android.hardware.sensor.accelerometer
+android.hardware.sensor.light
+android.hardware.touchscreen
+android.hardware.touchscreen.multitouch
+android.hardware.touchscreen.multitouch.distinct
+android.hardware.usb.accessory
+android.hardware.usb.host
+android.hardware.wifi
+android.hardware.wifi.direct
+android.software.app_widgets
+android.software.autofill
+android.software.backup
+android.software.companion_device_setup
+android.software.cts
+android.software.device_admin
+android.software.home_screen
+android.software.input_methods
+android.software.live_wallpaper
+android.software.managed_users
+android.software.picture_in_picture
+android.software.print
+android.software.voice_recognizers
+android.software.webview
+
+<<< CPU >>>
+
+Core Architecture: 4x ARM Cortex-A53 @ 1416 MHz
+2x ARM Cortex-A72 @ 1800 MHz
+Instruction Set: 64-bit ARMv8-A
+CPU Revision: r0p2
+CPU Cores: 6
+CPU Clock Range: 408 - 1800 MHz
+Core 1 Clock: 1200 MHz
+Core 2 Clock: 1200 MHz
+Core 3 Clock: 1200 MHz
+Core 4 Clock: 1200 MHz
+Core 5 Clock: 816 MHz
+Core 6 Clock: 816 MHz
+CPU Utilization: 5 %
+Scaling Governor: interactive
+Supported ABIs: arm64-v8a, armeabi-v7a, armeabi
+Supported 32-bit ABIs: armeabi-v7a, armeabi
+Supported 64-bit ABIs: arm64-v8a
+AES: Supported
+ASIMD/NEON: Supported
+PMULL: Supported
+SHA1: Supported
+SHA2: Supported
+
+<<< Display >>>
+
+Screen Resolution: 720 × 1280
+Screen Size: 68 mm × 121 mm
+Screen Diagonal: 5.46 inches
+Pixel Density: 269 dpi
+xdpi / ydpi: 269 / 269 dpi
+GPU Vendor: ARM
+GPU Renderer: Mali-T860
+GPU Cores: 4
+Refresh Rate: 60 Hz
+Default Orientation: Portrait
+OpenGL ES Version: 3.2
+GPU Version: OpenGL ES 3.2 v1.r18p0-01rel0.16f2a2e3305581ae54dd0f9788beb400
+OpenGL ES Extensions: GL_EXT_debug_marker
+GL_ARM_rgba8
+GL_ARM_mali_shader_binary
+GL_OES_depth24
+GL_OES_depth_texture
+GL_OES_depth_texture_cube_map
+GL_OES_packed_depth_stencil
+GL_OES_rgb8_rgba8
+GL_EXT_read_format_bgra
+GL_OES_compressed_paletted_texture
+GL_OES_compressed_ETC1_RGB8_texture
+GL_OES_standard_derivatives
+GL_OES_EGL_image
+GL_OES_EGL_image_external
+GL_OES_EGL_image_external_essl3
+GL_OES_EGL_sync
+GL_OES_texture_npot
+GL_OES_vertex_half_float
+GL_OES_required_internalformat
+GL_OES_vertex_array_object
+GL_OES_mapbuffer
+GL_EXT_texture_format_BGRA8888
+GL_EXT_texture_rg
+GL_EXT_texture_type_2_10_10_10_REV
+GL_OES_fbo_render_mipmap
+GL_OES_element_index_uint
+GL_EXT_shadow_samplers
+GL_OES_texture_compression_astc
+GL_KHR_texture_compression_astc_ldr
+GL_KHR_texture_compression_astc_hdr
+GL_KHR_texture_compression_astc_sliced_3d
+GL_KHR_debug
+GL_EXT_occlusion_query_boolean
+GL_EXT_disjoint_timer_query
+GL_EXT_blend_minmax
+GL_EXT_discard_framebuffer
+GL_OES_get_program_binary
+GL_OES_texture_3D
+GL_EXT_texture_storage
+GL_EXT_multisampled_render_to_texture
+GL_OES_surfaceless_context
+GL_OES_texture_stencil8
+GL_EXT_shader_pixel_local_storage
+GL_ARM_shader_framebuffer_fetch
+GL_ARM_shader_framebuffer_fetch_depth_stencil
+GL_ARM_mali_program_binary
+GL_EXT_sRGB
+GL_EXT_sRGB_write_control
+GL_EXT_texture_sRGB_decode
+GL_EXT_texture_sRGB_R8
+GL_EXT_texture_sRGB_RG8
+GL_KHR_blend_equation_advanced
+GL_KHR_blend_equation_advanced_coherent
+GL_OES_texture_storage_multisample_2d_array
+GL_OES_shader_image_atomic
+GL_EXT_robustness
+GL_EXT_draw_buffers_indexed
+GL_OES_draw_buffers_indexed
+GL_EXT_texture_border_clamp
+GL_OES_texture_border_clamp
+GL_EXT_texture_cube_map_array
+GL_OES_texture_cube_map_array
+GL_OES_sample_variables
+GL_OES_sample_shading
+GL_OES_shader_multisample_interpolation
+GL_EXT_shader_io_blocks
+GL_OES_shader_io_blocks
+GL_EXT_tessellation_shader
+GL_OES_tessellation_shader
+GL_EXT_primitive_bounding_box
+GL_OES_primitive_bounding_box
+GL_EXT_geometry_shader
+GL_OES_geometry_shader
+GL_ANDROID_extension_pack_es31a
+GL_EXT_gpu_shader5
+GL_OES_gpu_shader5
+GL_EXT_texture_buffer
+GL_OES_texture_buffer
+GL_EXT_copy_image
+GL_OES_copy_image
+GL_EXT_color_buffer_half_float
+GL_EXT_color_buffer_float
+GL_EXT_YUV_target
+GL_OVR_multiview
+GL_OVR_multiview2
+GL_OVR_multiview_multisampled_render_to_texture
+GL_KHR_robustness
+GL_KHR_robust_buffer_access_behavior
+GL_EXT_draw_elements_base_vertex
+GL_OES_draw_elements_base_vertex
+
+<<< Network >>>
+
+<< Telephony >>
+Phone Type: None
+
+<< Wi-Fi >>
+State: Enabled
+SSID: <unknown ssid>
+BSSID: 02:00:00:00:00:00
+Hidden SSID: Yes
+IPv4 Address: 192.168.33.86
+Signal Strength: -67 dBm (Very Good)
+Link Speed: 14 Mbps
+Frequency: 2422 MHz
+Network ID: 0
+Gateway: 192.168.33.1
+DNS1: 119.29.29.29
+DNS2: 182.254.116.116
+DHCP Lease Duration: 60 hours
+5 GHz Band: Supported
+Wi-Fi Aware: Not Supported
+Wi-Fi Direct: Supported
+
+<<< Battery >>>
+
+Power Source: A/C Charger
+Level: 100 %
+Status: Charging
+Health: Good
+Temperature: 42.4°C
+Capacity (Reported by Android): 9000 mAh
+
+<<< Android >>>
+
+Android Version: 8.1.0 (Oreo)
+API Level: 27
+Android Security Patch Level: 2019-04-05
+Rooted Device: Yes
+Android ID: 1032213b1f5df17f
+Build ID: rk3399-userdebug 8.1.0 OPM8.190305.001 130948 test-keys
+Codename: REL
+Fingerprint: rockchip/rk3399/rk3399:8.1.0/OPM8.190305.001/130948:userdebug/test-keys
+ID: OPM8.190305.001
+Incremental: 130948
+Java Runtime Version: Android Runtime 0.9
+Java VM Version: ART 2.1.0
+Java VM Heap Size: 192 MB
+Kernel Architecture: aarch64
+Kernel Version: 4.4.167 (zjm@shsvr01) (gcc version 6.3.1 20170404 (Linaro GCC 6.3-2017.05) ) #47 SMP PREEMPT Fri Mar 22 13:08:31 CST 2019
+Tags: test-keys
+Type: userdebug
+Google Play Services Version: < Not Present >
+Huawei Mobile Services Version: < Not Present >
+OpenSSL Version: OpenSSL 1.0.2 (compatible; BoringSSL)
+ZLib Version: 1.2.8
+ICU CLDR Version: 30.0.3
+ICU Library Version: 58.2
+ICU Unicode Version: 9.0
+Android Language: English (United States)
+Configured Time Zone: GMT+00:00 (UTC+00:00)
+UpTime: 00:10:43
+
+<<< Devices >>>
+
+<< Rear-Facing Camera >>
+Resolution: 1.2 MP (1280 × 960)
+Focal Length: 35.00 mm
+Focus Modes: fixed, infinity
+Video Stabilization: Not Supported
+Zoom: Supported
+Auto Exposure Locking: Supported
+Auto White Balance Locking: Not Supported
+Flash: Supported
+
+<< USB Device - GenesysLogic USB2.0 Hub >>
+Manufacturer: GenesysLogic
+Product: USB2.0 Hub
+Device ID: 05E3-0610
+Device Class: 09 / 00 (Hi-Speed Hub with multiple TTs)
+Device Protocol: 02
+Revision: 0402
+Supported USB Version: 2.10
+Current Speed: 480 Mbps
+Maximum Power: 100 mA
+
+<< USB Device - GenesysLogic USB3.0 Hub >>
+Manufacturer: GenesysLogic
+Product: USB3.0 Hub
+Device ID: 05E3-0616
+Device Class: 09 / 00 (Hub)
+Device Protocol: 03
+Revision: 0402
+Supported USB Version: 3.00
+Current Speed: 5000 Mbps
+
+<< USB Device - USB USB Device >>
+Manufacturer: USB
+Product: USB Device
+Device ID: 0C45-800A
+Device Class: 00 / 00
+Device Protocol: 00
+Revision: 0001
+Supported USB Version: 1.10
+Current Speed: 12 Mbps
+Maximum Power: 100 mA
+
+<< USB Device - Linux 4.4.167 ehci_hcd EHCI Host Controller >>
+Manufacturer: Linux 4.4.167 ehci_hcd
+Product: EHCI Host Controller
+Serial: fe3c0000.usb
+Device ID: 1D6B-0002
+Device Class: 09 / 00 (Full-Speed Hub)
+Device Protocol: 00
+Revision: 0404
+Supported USB Version: 2.00
+Current Speed: 480 Mbps
+
+<< USB Device - Linux 4.4.167 ohci_hcd Generic Platform OHCI controller >>
+Manufacturer: Linux 4.4.167 ohci_hcd
+Product: Generic Platform OHCI controller
+Serial: fe3e0000.usb
+Device ID: 1D6B-0001
+Device Class: 09 / 00 (Full-Speed Hub)
+Device Protocol: 00
+Revision: 0404
+Supported USB Version: 1.10
+Current Speed: 12 Mbps
+
+<< USB Device - Linux 4.4.167 xhci-hcd xHCI Host Controller >>
+Manufacturer: Linux 4.4.167 xhci-hcd
+Product: xHCI Host Controller
+Serial: xhci-hcd.12.auto
+Device ID: 1D6B-0002
+Device Class: 09 / 00 (Hi-Speed Hub with single TT)
+Device Protocol: 01
+Revision: 0404
+Supported USB Version: 2.00
+Current Speed: 480 Mbps
+
+<< USB Device - Linux 4.4.167 xhci-hcd xHCI Host Controller >>
+Manufacturer: Linux 4.4.167 xhci-hcd
+Product: xHCI Host Controller
+Serial: xhci-hcd.12.auto
+Device ID: 1D6B-0003
+Device Class: 09 / 00 (Hub)
+Device Protocol: 03
+Revision: 0404
+Supported USB Version: 3.00
+Current Speed: 5000 Mbps
+
+<< USB Device - Linux 4.4.167 ehci_hcd EHCI Host Controller >>
+Manufacturer: Linux 4.4.167 ehci_hcd
+Product: EHCI Host Controller
+Serial: fe380000.usb
+Device ID: 1D6B-0002
+Device Class: 09 / 00 (Full-Speed Hub)
+Device Protocol: 00
+Revision: 0404
+Supported USB Version: 2.00
+Current Speed: 480 Mbps
+
+<< USB Device - Linux 4.4.167 ohci_hcd Generic Platform OHCI controller >>
+Manufacturer: Linux 4.4.167 ohci_hcd
+Product: Generic Platform OHCI controller
+Serial: fe3a0000.usb
+Device ID: 1D6B-0001
+Device Class: 09 / 00 (Full-Speed Hub)
+Device Protocol: 00
+Revision: 0404
+Supported USB Version: 1.10
+Current Speed: 12 Mbps
+
+<< USB Device >>
+Device ID: 04E2-1414
+Device Class: EF / 02 (Interface Association Descriptor)
+Device Protocol: 01
+Revision: 0003
+Supported USB Version: 2.00
+Current Speed: 12 Mbps
+Maximum Power: 94 mA
+
+<< OpenCL Device - Mali-T860 >>
+Device Name: Mali-T860
+Device Type: GPU
+Device Vendor: ARM
+Device Vendor ID: 0x08602000
+Device Version: OpenCL 1.2 v1.r18p0-01rel0.16f2a2e3305581ae54dd0f9788beb400
+Device Profile: Full
+Driver Version: 1.2
+OpenCL C Version: OpenCL C 1.2 v1.r18p0-01rel0.16f2a2e3305581ae54dd0f9788beb400
+Clock Rate: 5 MHz
+Compute Units: 4
+Address Space Size: 64-bit
+Max 2D Image Size: 65536 × 65536
+Max 3D Image Size: 65536 × 65536 × 65536
+Max Image Array Size: 2048
+Max Image Buffer Size: 65536
+Max Samplers: 16
+Max Work-Item Size: 256 × 256 × 256
+Max Work-Group Size: 256
+Max Argument Size: 1 KB
+Max Constant Buffer Size: 64 KB
+Max Constant Arguments: 8
+Max Printf Buffer Size: 1 MB
+Native ISA Vector Widths: char16, short8, int4, long2, half8, float4, double2
+Preferred Native Vector Widths: char16, short8, int4, long2, half8, float4, double2
+Profiling Timer Resolution: 1000 ns
+OpenCL Library: /system/vendor/lib64/libOpenCL.so
+Global Memory: 3935380 KB
+Global Memory Cache: 256 KB  (Read/Write, 64-byte line)
+Local Memory: 32 KB
+Max Memory Object Allocation Size: 983845 KB
+Memory Base Address Alignment: 1024-bit
+Min Data Type Alignment: 128 bytes
+Image Row Pitch Alignment: 16 pixels
+Image Base Address Alignment: 32 pixels
+Command-Queue Out Of Order Execution: Enabled
+Command-Queue Profiling: Enabled
+Compiler Available: Yes
+Error Correction: Not Supported
+Images: Supported
+Kernel Execution: Supported
+Linker Available: Yes
+Little-Endian Device: Yes
+Native Kernel Execution: Not Supported
+SVM Atomics: Not Supported
+SVM Coarse Grain Buffer: Not Supported
+SVM Fine Grain Buffer: Not Supported
+SVM Fine Grain System: Not Supported
+Unified Memory: Yes
+OpenCL Extensions: cl_khr_global_int32_base_atomics
+cl_khr_global_int32_extended_atomics
+cl_khr_local_int32_base_atomics
+cl_khr_local_int32_extended_atomics
+cl_khr_byte_addressable_store
+cl_khr_3d_image_writes
+cl_khr_fp64
+cl_khr_int64_base_atomics
+cl_khr_int64_extended_atomics
+cl_khr_fp16
+cl_khr_icd
+cl_khr_egl_image
+cl_khr_image2d_from_buffer
+cl_arm_core_id
+cl_arm_printf
+cl_arm_thread_limit_hint
+cl_arm_non_uniform_work_group_size
+cl_arm_import_memory
+
+<< Vulkan Device - Mali-T860 >>
+Device Name: Mali-T860
+Device Type: Integrated GPU
+Device UUID: FD-E6-8A-FF-9F-7C-B7-B9-01-F4-C3-29-86-D4-27-4C
+Device ID: 000013B5-08602000
+Memory Size: 3935380 KB
+Max 1D Image Size: 8192
+Max 2D Image Size: 8192 x 8192
+Max 3D Image Size: 4096 x 4096 x 4096
+Max Cube Image Size: 8192 x 8192
+Max Image Layers: 256
+Max Texel Buffer Elements: 65536
+Max Uniform Buffer Range: 65536
+Max Storage Buffer Range: 134217728
+Max Push Constants Size: 128 bytes
+Buffer Image Granularity: 4 KB
+Max Bound Descriptor Sets: 4
+Max Per-Stage Descriptor Samplers: 128
+Max Per-Stage Descriptor Uniform Buffers: 12
+Max Per-Stage Descriptor Storage Buffers: 4
+Max Per-Stage Descriptor Sampled Images: 16
+Max Per-Stage Descriptor Storage Images: 4
+Max Per-Stage Descriptor Input Attachments: 4
+Max Per-Stage Resources: 44
+Max Descriptor Set Samplers: 768
+Max Descriptor Set Uniform Buffers: 72
+Max Descriptor Set Dynamic Uniform Buffers: 8
+Max Descriptor Set Storage Buffers: 24
+Max Descriptor Set Dynamic Storage Buffers: 4
+Max Descriptor Set Sampled Images: 96
+Max Descriptor Set Storage Images: 24
+Max Descriptor Set Input Attachments: 4
+Max Vertex Input Attributes: 16
+Max Vertex Input Bindings: 16
+MaxVertex Input Attribute Offset: 2047
+Max Vertex Input Binding Stride: 2048
+Max Vertex Output Components: 128
+Max Tesselation Generation Level: 64
+Max Tesselation Patch Size: 32
+Max Tesselation Control Per-Vertex Input Components: 64
+Max Tesselation Control Per-Vertex Output Components: 64
+Max Tesselation Control Per-Patch Output Components: 120
+Max Tesselation Control Total Output Components: 2048
+Max Tesselation Evaluation Input Components: 64
+Max Tesselation Evaluation Output Components: 64
+Max Geometry Shader Invocations: 32
+Max Geometry Input Components: 64
+Max Geometry Output Components: 128
+Max Geometry Output Vertices: 256
+Max Geometry Total Output Components: 1024
+Max Fragment Input Components: 128
+Max Fragment Output Attachments: 4
+Max Fragment Combined Output Resources: 12
+Max Compute Shared Memory Size: 32 KB
+Max Compute Work Group Count: X: 65536, Y: 65536, Z: 65536
+Max Compute Work Group Invocations: 256
+Max Compute Work Group Size: X: 256, Y: 256, Z: 256
+Subpixel Precision Bits: 8
+Subtexel Precision Bits: 8
+Mipmap Precision Bits: 8
+Max Draw Indexed Index Value: 4294967295
+Max Draw Indirect Count: 1
+Max Sampler LOD Bias: 2.000000
+Max Sampler Anisotropy: 1.000000
+Max Viewports: 1
+Max Viewport Size: 8192 x 8192
+Viewport Bounds Range: -16384.000000 ... 16383.000000
+Min Memory Map Alignment: 64 bytes
+Min Texel Buffer Offset Alignment: 256 bytes
+Min Uniform Buffer Offset Alignment: 16 bytes
+Min Storage Buffer Offset Alignment: 256 bytes
+Min / Max Texel Offset: -8 / 7
+Min / Max Texel Gather Offset: -8 / 7
+Min / Max Interpolation Offset: -0.500000 / 0.500000
+Subpixel Interpolation Offset Bits: 4
+Max Framebuffer Size: 8192 x 8192
+Max Framebuffer Layers: 256
+Framebuffer Color Sample Counts: 0x00000005
+Framebuffer Depth Sample Counts: 0x00000005
+Framebuffer Stencil Sample Counts: 0x00000005
+Framebuffer No Attachments Sample Counts: 0x00000005
+Max Color Attachments: 4
+Sampled Image Color Sample Counts: 0x00000005
+Sampled Image Integer Sample Counts: 0x00000001
+Sampled Image Depth Sample Counts: 0x00000005
+Sampled Image Stencil Sample Counts: 0x00000005
+Storage Image Sample Counts: 0x00000001
+Max Sample Mask Words: 1
+Discrete Queue Priorities: 2
+Point Size Range: 1.000000 ... 64.000000
+Line Width Range: 1.000000 ... 1.000000
+Point Size Granularity: 0.062500
+Optimal Buffer Copy Offset Alignment: 64 bytes
+Optimal Buffer Copy Row Pitch Alignment: 64 bytes
+Non-Coherent Atom Size: 64 bytes
+Driver Version: 210.454.1925
+API Version: 1.0.39
+Vulkan Library: /system/lib64/libvulkan.so
+Alpha To One: Not Supported
+Anisotropic Filtering: Not Supported
+ASTC LDR Texture Compression: Supported
+BC Texture Compression: Not Supported
+Depth Bias Clamping: Supported
+Depth Bounds Tests: Not Supported
+Depth Clamping: Not Supported
+Draw Indirect First Instance: Supported
+Dual Source Blend Operations: Not Supported
+ETC2 and EAC Texture Compression: Supported
+Fragment Stores and Atomics: Supported
+Full Draw Index Uint32: Supported
+Geometry Shader: Supported
+Image Cube Array: Supported
+Independent Blend: Supported
+Inherited Queries: Not Supported
+Large Points: Supported
+Logic Operations: Not Supported
+Multi-Draw Indirect: Not Supported
+Multi Viewport: Not Supported
+Occlusion Query Precise: Supported
+Pipeline Statistics Query: Not Supported
+Point and Wireframe Fill Modes: Not Supported
+Robust Buffer Access: Supported
+Sample Rate Shading: Supported
+Shader Clip Distance: Not Supported
+Shader Cull Distance: Not Supported
+Shader Float64: Not Supported
+Shader Image Gather Extended: Supported
+Shader Int16: Not Supported
+Shader Int64: Not Supported
+Shader Resource Min LOD: Not Supported
+Shader Resource Residency: Not Supported
+Shader Sampled Image Array Dynamic Indexing: Supported
+Shader Storage Buffer Array Dynamic Indexing: Supported
+Shader Storage Image Array Dynamic Indexing: Supported
+Shader Storage Image Extended Formats: Not Supported
+Shader Storage Image Multisample: Not Supported
+Shader Storage Image Read Without Format: Not Supported
+Shader Storage Image Write Without Format: Not Supported
+Shader Tesselation and Geometry Point Size: Not Supported
+Shader Uniform Buffer Array Dynamic Indexing: Supported
+Sparse Binding: Not Supported
+Sparse Residency 2 Samples: Not Supported
+Sparse Residency 4 Samples: Not Supported
+Sparse Residency 8 Samples: Not Supported
+Sparse Residency 16 Samples: Not Supported
+Sparse Residency Aliased: Not Supported
+Sparse Residency Aligned Mip Size: No
+Sparse Residency Buffer: Not Supported
+Sparse Residency Image 2D: Not Supported
+Sparse Residency Image 3D: Not Supported
+Sparse Residency Non-Resident Strict: No
+Sparse Residency Standard 2D Block Shape: No
+Sparse Residency Standard 2D Multisample Block Shape: No
+Sparse Residency Standard 3D Block Shape: No
+Standard Sample Locations: Yes
+Strict Line Rasterization: Yes
+Tesselation Shader: Supported
+Timestamps on All Graphics and Compute Queues: Not Supported
+Variable Multisample Rate: Not Supported
+Vertex Pipeline Stores and Atomics: Not Supported
+Wide Lines: Not Supported
+Device Extensions: VK_KHR_incremental_present
+VK_KHR_swapchain
+Instance Extensions: VK_KHR_surface
+VK_KHR_android_surface
+VK_EXT_swapchain_colorspace
+VK_KHR_get_surface_capabilities2
+VK_EXT_debug_report
+VK_KHR_get_physical_device_properties2
+
+No CUDA devices found.
+No PCI devices found.
+
+<<< Thermal >>>
+
+soc-thermal: 42.2°C
+gpu-thermal: 40.6°C
+Battery: 42.4°C
+
+<<< Sensors >>>
+
+MPL Accelerometer: 
+MPL Linear Acceleration: 
+MPL Gravity: 
+Light sensor: 
+
+<<< Apps >>>
+
+AIDA64: com.finalwire.aida64(v1.88)
+CoolApk: com.coolapk.market(v12.5.3)
+
+<<< Codecs >>>
+
+OMX.google.aac.decoder: audio/mp4a-latm
+OMX.google.amrnb.decoder: audio/3gpp
+OMX.google.amrwb.decoder: audio/amr-wb
+OMX.google.g711.alaw.decoder: audio/g711-alaw
+OMX.google.g711.mlaw.decoder: audio/g711-mlaw
+OMX.google.mp3.decoder: audio/mpeg
+OMX.google.opus.decoder: audio/opus
+OMX.google.raw.decoder: audio/raw
+OMX.google.vorbis.decoder: audio/vorbis
+OMX.google.aac.encoder: audio/mp4a-latm
+OMX.google.amrnb.encoder: audio/3gpp
+OMX.google.amrwb.encoder: audio/amr-wb
+OMX.google.flac.encoder: audio/flac
+OMX.rk.video_decoder.avc: video/avc
+OMX.google.h264.decoder: video/avc
+OMX.rk.video_decoder.flv1: video/flv
+OMX.rk.video_decoder.h263: video/3gpp
+OMX.rk.video_decoder.hevc: video/hevc
+OMX.google.hevc.decoder: video/hevc
+OMX.rk.video_decoder.m2v: video/mpeg2
+OMX.rk.video_decoder.m4v: video/mp4v-es
+OMX.rk.video_decoder.vp8: video/x-vnd.on2.vp8
+OMX.google.vp8.decoder: video/x-vnd.on2.vp8
+OMX.google.vp9.decoder: video/x-vnd.on2.vp9
+OMX.rk.video_encoder.avc: video/avc
+OMX.google.h264.encoder: video/avc
+OMX.google.h263.encoder: video/3gpp
+OMX.google.mpeg4.encoder: video/mp4v-es
+OMX.google.vp8.encoder: video/x-vnd.on2.vp8
+
+<<< Directories >>>
+
+Data: /data
+Root: /system
+Java Home: /system
+Download/Cache Content: /data/cache
+
+<< External Storage >>
+Primary External Storage: /storage/emulated/0
+External Files #1: /storage/emulated/0/Android/data/com.finalwire.aida64/files
+Alarms: /storage/emulated/0/Alarms
+DCIM: /storage/emulated/0/DCIM
+Downloads: /storage/emulated/0/Download
+Movies: /storage/emulated/0/Movies
+Music: /storage/emulated/0/Music
+Notifications: /storage/emulated/0/Notifications
+Pictures: /storage/emulated/0/Pictures
+Podcasts: /storage/emulated/0/Podcasts
+Ringtones: /storage/emulated/0/Ringtones
+
+<< Mount Points >>
+/: Device: rootfs
+File System: rootfs
+Read-Only
+/dev: Device: tmpfs
+File System: tmpfs
+Read-Write
+/dev/pts: Device: devpts
+File System: devpts
+Read-Write
+/dev/memcg: Device: none
+File System: cgroup
+Read-Write
+/dev/stune: Device: none
+File System: cgroup
+Read-Write
+/dev/cpuctl: Device: none
+File System: cgroup
+Read-Write
+/dev/cpuset: Device: none
+File System: cgroup
+Read-Write
+/dev/usb-ffs/adb: Device: adb
+File System: functionfs
+Read-Write
+/proc: Device: proc
+File System: proc
+Read-Write
+/sys: Device: sysfs
+File System: sysfs
+Read-Write
+/sys/fs/selinux: Device: selinuxfs
+File System: selinuxfs
+Read-Write
+/sys/kernel/debug: Device: /sys/kernel/debug
+File System: debugfs
+Read-Write
+/sys/kernel/debug/tracing: Device: /sys/kernel/debug/tracing
+File System: tracefs
+Read-Write
+/sys/fs/pstore: Device: pstore
+File System: pstore
+Read-Write
+/system: Device: /dev/block/dm-0
+File System: ext4
+Read-Only
+/vendor: Device: /dev/block/dm-1
+File System: ext4
+Read-Only
+/acct: Device: none
+File System: cgroup
+Read-Write
+/mnt: Device: tmpfs
+File System: tmpfs
+Read-Write
+/mnt/runtime/default/emulated: Device: /data/media
+File System: sdcardfs
+Read-Write
+/mnt/runtime/read/emulated: Device: /data/media
+File System: sdcardfs
+Read-Write
+/mnt/runtime/write/emulated: Device: /data/media
+File System: sdcardfs
+Read-Write
+/config: Device: none
+File System: configfs
+Read-Write
+/oem: Device: /dev/block/by-name/oem
+File System: ext4
+Read-Only
+/cache: Device: /dev/block/by-name/cache
+File System: ext4
+Read-Write
+/metadata: Device: /dev/block/by-name/metadata
+File System: ext4
+Read-Write
+/data: Device: /dev/block/dm-2
+File System: f2fs
+Read-Write
+/storage: Device: tmpfs
+File System: tmpfs
+Read-Write
+/storage/emulated: Device: /data/media
+File System: sdcardfs
+Read-Write
+/storage/self: Device: tmpfs
+File System: tmpfs
+Read-Write
+
+<<< System Files >>>
+
+Buddy Info: /proc/buddyinfo
+Build Properties: /system/build.prop
+Character & Block Devices: /proc/devices
+Command Line: /proc/cmdline
+CPU Information: /proc/cpuinfo
+Default Properties: /default.prop
+Execution Domains: /proc/execdomains
+File Systems: /proc/filesystems
+Frame Buffer Devices: /proc/fb
+Hosts: /system/etc/hosts
+Interrupts: /proc/interrupts
+Input Devices: /proc/bus/input/devices
+I/O Ports: /proc/ioports
+Kernel Version: /proc/version
+Load Average: /proc/loadavg
+Locked Files: /proc/locks
+Memory Information: /proc/meminfo
+Memory Map: /proc/iomem
+Misc Drivers: /proc/misc
+Partitions: /proc/partitions
+PCI Devices: /proc/bus/pci/devices
+Statistics: /proc/stat
+Swap Spaces: /proc/swaps
+
+<<< /proc/cpuinfo >>>
+
+processor	: 0
+BogoMIPS	: 48.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32
+CPU implementer	: 0x41
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd03
+CPU revision	: 4
+
+processor	: 1
+BogoMIPS	: 48.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32
+CPU implementer	: 0x41
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd03
+CPU revision	: 4
+
+processor	: 2
+BogoMIPS	: 48.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32
+CPU implementer	: 0x41
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd03
+CPU revision	: 4
+
+processor	: 3
+BogoMIPS	: 48.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32
+CPU implementer	: 0x41
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd03
+CPU revision	: 4
+
+processor	: 4
+BogoMIPS	: 48.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32
+CPU implementer	: 0x41
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd08
+CPU revision	: 2
+
+processor	: 5
+BogoMIPS	: 48.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32
+CPU implementer	: 0x41
+CPU architecture: 8
+CPU variant	: 0x0
+CPU part	: 0xd08
+CPU revision	: 2
+
+Serial		: 70f173a77fd746e6
+
+<<< /proc/meminfo >>>
+
+MemTotal:        3936376 kB
+MemFree:         1385736 kB
+MemAvailable:    2792480 kB
+Buffers:           30556 kB
+Cached:          1259920 kB
+SwapCached:            0 kB
+Active:          1357236 kB
+Inactive:         736520 kB
+Active(anon):     805516 kB
+Inactive(anon):    50280 kB
+Active(file):     551720 kB
+Inactive(file):   686240 kB
+Unevictable:         256 kB
+Mlocked:             256 kB
+SwapTotal:       1967684 kB
+SwapFree:        1967684 kB
+Dirty:                96 kB
+Writeback:             0 kB
+AnonPages:        803760 kB
+Mapped:           487004 kB
+Shmem:             52536 kB
+Slab:             290836 kB
+SReclaimable:     232588 kB
+SUnreclaim:        58248 kB
+KernelStack:       20848 kB
+PageTables:        30644 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     3935872 kB
+Committed_AS:   72748708 kB
+VmallocTotal:   258867136 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+CmaTotal:          16384 kB
+CmaFree:           13480 kB
+
+<<< Comment >>>
+
+Enter your comment here:
+

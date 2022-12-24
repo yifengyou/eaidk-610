@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/iic.dir/main.cpp.o CMakeFiles/iic.dir/iic_common.cpp.o  -o iic 

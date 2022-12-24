@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/play.dir/main.cpp.o  -o play -lasound 

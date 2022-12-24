@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/openailab/cases/rs485/main.cpp
+stdio.h
+-
+string.h
+-
+unistd.h
+-
+rs485_common.h
+/home/openailab/cases/rs485/rs485_common.h
+
+/home/openailab/cases/rs485/rs485_common.cpp
+termios.h
+-
+stdio.h
+-
+pthread.h
+-
+stdint.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+strings.h
+-
+sys/time.h
+-
+sys/types.h
+-
+unistd.h
+-
+string.h
+-
+rs485_common.h
+/home/openailab/cases/rs485/rs485_common.h
+
+/home/openailab/cases/rs485/rs485_common.h
+

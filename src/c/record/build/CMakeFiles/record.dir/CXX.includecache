@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/openailab/cases/record/main.cpp
+unistd.h
+-
+iostream
+-
+fstream
+-
+alsa/asoundlib.h
+-
+sys/time.h
+-
+

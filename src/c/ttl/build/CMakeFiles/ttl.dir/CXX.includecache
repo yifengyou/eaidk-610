@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/openailab/cases/ttl/main.cpp
+stdio.h
+-
+string.h
+-
+unistd.h
+-
+ttl_common.h
+/home/openailab/cases/ttl/ttl_common.h
+
+/home/openailab/cases/ttl/ttl_common.cpp
+termios.h
+-
+stdio.h
+-
+pthread.h
+-
+stdint.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+strings.h
+-
+sys/time.h
+-
+sys/types.h
+-
+unistd.h
+-
+string.h
+-
+ttl_common.h
+/home/openailab/cases/ttl/ttl_common.h
+
+/home/openailab/cases/ttl/ttl_common.h
+

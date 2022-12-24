@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/record.dir/main.cpp.o  -o record -lasound 

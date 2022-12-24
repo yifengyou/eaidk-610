@@ -1,0 +1,3 @@
+/home/openailab/cases/ttl/build/CMakeFiles/rebuild_cache.dir
+/home/openailab/cases/ttl/build/CMakeFiles/ttl.dir
+/home/openailab/cases/ttl/build/CMakeFiles/edit_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/ttl.dir/main.cpp.o CMakeFiles/ttl.dir/ttl_common.cpp.o  -o ttl 

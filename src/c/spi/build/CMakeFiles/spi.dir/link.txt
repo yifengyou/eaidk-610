@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/spi.dir/main.cpp.o CMakeFiles/spi.dir/spi_common.cpp.o  -o spi 

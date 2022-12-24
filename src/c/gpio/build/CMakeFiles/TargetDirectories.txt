@@ -1,0 +1,3 @@
+/home/openailab/cases/gpio/build/CMakeFiles/rebuild_cache.dir
+/home/openailab/cases/gpio/build/CMakeFiles/gpio.dir
+/home/openailab/cases/gpio/build/CMakeFiles/edit_cache.dir

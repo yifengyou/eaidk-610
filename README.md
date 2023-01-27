@@ -20,13 +20,15 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 
 * [eaidk-610开发板介绍](docs/eaidk-610开发板介绍.md)
+  - [LCD](docs/eaidk-610开发板介绍/LCD.md)
 * [相关资源获取](docs/相关资源获取.md)
 
 
 
 
-
 ## 图示
+
+![20230127_215852_39](image/20230127_215852_39.png) 
 
 ![20221224_174323_37](image/20221224_174323_37.png)
 

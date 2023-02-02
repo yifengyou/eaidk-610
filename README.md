@@ -28,7 +28,11 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ## 图示
 
-![20230127_215852_39](image/20230127_215852_39.png) 
+![20230203_060715_88](image/20230203_060715_88.png)
+
+* from : <https://github.com/lanseyujie/tn3399_v3>
+
+![20230127_215852_39](image/20230127_215852_39.png)
 
 ![20221224_174323_37](image/20221224_174323_37.png)
 

@@ -260,6 +260,114 @@ CMDLINE: mtdparts=rk29xxnand:-@0x00008000(rootfs:grow),0x00001000@0x00000040(idb
 Win端的瑞芯微烧写工具隐藏了太多细节，对技术人员来说并不友好，文档也不完善，得多踩坑才是。
 
 
+## rk3399_loader_v1.26.bin是如何生成的？
+
+为何每次生成都会依赖这个程序？rk3399_loader_v1.26.bin
+
+
+RK3399使用两机Loader模式载入u-boot，第一段载入ddr配置文件，第二段载入uboot文件和ARM可信固件（arm-trusted-firmware）对应的编译后文件分别为rk3399_loader_v1.17.115.bin、uboot.img、trust.img。
+
+  
+https://github.com/rockchip-linux/rkbin
+
+官方的文档真的少的一批，说了一堆规则，也不说一下怎么用
+
+
+
+还得网上找找
+
+![](../../image/Pasted%20image%2020230514201802.png)
+
+
+![](../../image/Pasted%20image%2020230514200426.png)
+
+
+
+https://blog.csdn.net/kris_fei/article/details/78720957
+
+![](../../image/Pasted%20image%2020230514201829.png)
+
+
+
+解决方案：
+
+```
+git clone https://github.com/rockchip-linux/rkbin
+cd rkbin
+./tools/boot_merger RKBOOT/RK3399MINIALL.ini
+ls -alh *.bin
+```
+
+
+
+
+
+## 如何修改armbian第一次登陆行为
+
+*  修改模板
+*  chroot 进入到rootfs
+*  /usr/lib/armbian/armbian-firstlogin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

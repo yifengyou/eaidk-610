@@ -97,7 +97,18 @@ CONFIG_ETH_DESIGNWARE=y
 
 ![20230217_231649_62](image/20230217_231649_62.png)
 
+顺便添加delay
 
+![](../../image/Pasted%20image%2020230514222715.png)
+
+
+```
+
+CONFIG_NETDEVICES=y
+CONFIG_DM_ETH=y
+CONFIG_BOOTDELAY=30
+
+```
 
 
 ## gpt分区下uboot启动引导问题
@@ -310,10 +321,22 @@ ls -alh *.bin
 
 
 
+## 编译错误 previous declaration of ‘fdt64_t’ with type ‘fdt64_t’ 
 
+![](../../image/Pasted%20image%2020230527155616.png)
 
+```
+/data/eaidk-official-src/u-boot/include/libfdt_env.h:19:16: note: previous declaration of ‘fdt64_t’ with type ‘fdt64_t’ {aka ‘long long unsigned int’}
+   19 | typedef __be64 fdt64_t;
+      |                ^~~~~~~
+/usr/include/libfdt_env.h:51:23: error: expected ‘)’ before ‘x’
+   51 | static inline fdt32_t cpu_to_fdt32(uint32_t x)
+      |                       ^~~~~~~~~~~~
+/data/eaidk-official-src/u-boot/include/compiler.h:66:16: error: expected ‘)’ before ‘&’ token
+   66 |         ((((x) & 0xff000000) >> 24) | \
+      |                ^
 
-
+```
 
 
 

@@ -20,10 +20,12 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [官方eaidk610源代码分析](docs/官方eaidk610源代码分析.md)
     * [uboot](docs/官方eaidk610源代码分析/uboot.md)
         * [打开DEBUG调试模式](docs/官方eaidk610源代码分析/uboot/打开DEBUG调试模式.md)
+        * [加载环境变量](docs/官方eaidk610源代码分析/uboot/加载环境变量.md)
         * [加载启动参数](docs/官方eaidk610源代码分析/uboot/加载启动参数.md)
         * [如何显示bmp](docs/官方eaidk610源代码分析/uboot/如何显示bmp.md)
         * [增加lcd命令](docs/官方eaidk610源代码分析/uboot/增加lcd命令.md)
         * [加载resource.img及fdt](docs/官方eaidk610源代码分析/uboot/加载resource.img及fdt.md)
+        * [按键初始化](docs/官方eaidk610源代码分析/uboot/按键初始化.md)
     * [kernel](docs/官方eaidk610源代码分析/kernel.md)
 * [适配armbian](docs/适配armbian.md)
     * [uboot适配](docs/适配armbian/uboot适配.md)
@@ -31,6 +33,7 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [相关资源获取](docs/相关资源获取.md)
 * [其他](docs/其他.md)
     * [启动日志](docs/其他/启动日志.md)
+
 
 
 ## 图示

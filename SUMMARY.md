@@ -14,6 +14,7 @@
         * [加载resource.img及fdt](docs/官方eaidk610源代码分析/uboot/加载resource.img及fdt.md)
         * [按键初始化](docs/官方eaidk610源代码分析/uboot/按键初始化.md)
         * [点亮LED灯](docs/官方eaidk610源代码分析/uboot/点亮LED灯.md)
+        * [适配网络](docs/官方eaidk610源代码分析/uboot/适配网络.md)
     * [kernel](docs/官方eaidk610源代码分析/kernel.md)
 * [适配armbian](docs/适配armbian.md)
     * [uboot适配](docs/适配armbian/uboot适配.md)

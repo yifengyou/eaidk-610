@@ -1,6 +1,6 @@
 #==========================================================================
-# Description: Build Armbian
-# Copyright (C) 2021 https://github.com/ophub/amlogic-s9xxx-armbian
+# Description: Build eaidk-610 Armbian
+# Copyright (C) 2025 https://github.com/yifengyou/eaidk-610
 #==========================================================================
 
 name: Build EAIDK-610 armbian

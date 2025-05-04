@@ -1,19 +1,118 @@
 #==========================================================================
-# Description: Build Armbian
-# Copyright (C) 2025 https://github.com/yifengyou/nanopit4
+# Description: Build eaidk-610 Armbian
+# Copyright (C) 2025 https://github.com/yifengyou/eaidk-610
 #==========================================================================
 
-name: Auto Nanopct4 armbian
+name: Autobuild EAIDK-610 armbian
 
 on:
   push:                   # 推送时触发
     branches:
       - master            # 只在 master 分支触发
   schedule:               # 定时触发
-    - cron: '0 6 * * *'   # 每天零点触发
+    - cron: '0 7 * * *'   # 每天零点触发
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      set_release:
+        description: "Select OS Release."
+        required: false
+        default: "bullseye"
+        type: choice
+        options:
+          - bullseye
+          - jammy
+          - noble
+          - bookworm
+      armbian_board:
+        description: "Select device board."
+        required: false
+        default: "eaidk-610"
+        type: choice
+        options:
+          - smart-am60
+          - eaidk-610
+          - fine3399
+          - firefly-rk3399
+          - fmx1-pro
+          - h88k
+          - h88k-v3
+          - king3399
+          - kylin3399
+          - nanopc-t6
+          - nanopi-r5c
+          - nanopi-r5s
+          - orangepi-5-plus
+          - rock5b
+          - rock5c
+          - tn3399
+      armbian_kernel:
+        description: "Select kernel version."
+        required: false
+        default: "6.1.y_6.12.y"
+        type: choice
+        options:
+          - 5.4.y
+          - 5.10.y
+          - 5.15.y
+          - 6.1.y
+          - 6.6.y
+          - 6.12.y
+          - 5.4.y_5.10.y
+          - 5.15.y_6.1.y
+          - 6.1.y_6.12.y
+          - 6.1.y_6.6.y
+          - 6.6.y_6.12.y
+      auto_kernel:
+        description: "Auto use the latest kernel."
+        required: false
+        default: true
+        type: boolean
+      kernel_repo:
+        description: "Set the kernel repository."
+        required: false
+        default: "ophub/kernel"
+        type: choice
+        options:
+          - ophub/kernel
+      kernel_usage:
+        description: "Set the tags of the stable kernel."
+        required: false
+        default: "stable"
+        type: choice
+        options:
+          - stable
+          - flippy
+          - dev
+          - beta
+      armbian_fstype:
+        description: "Select armbian rootfs type."
+        required: false
+        default: "ext4"
+        type: choice
+        options:
+          - ext4
+          - btrfs
+      armbian_storage:
+        description: "Select image storage type."
+        required: false
+        default: "save"
+        type: choice
+        options:
+          - save
+          - temp
+      builder_name:
+        description: "Set Armbian builder signature."
+        required: false
+        default: "ophub"
+        type: choice
+        options:
+          - ophub
+          - angel
 
 env:
   TZ: America/New_York
+  ROOTFS_SCRIPT: compile-kernel/tools/script/armbian_rootfs.sh
 
 jobs:
   build:
@@ -37,6 +136,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+        # 如果是自动触发，env 可能为空，因此需要使用默认值
+      - name: Configure Inputs for Auto Trigger
+        if: github.event_name != 'workflow_dispatch'
+        run: |
+          echo "Setting default env for auto trigger"
+          echo "armbian_board=eaidk-610" >> $GITHUB_ENV
+          echo "armbian_kernel=6.1.y_6.12.y" >> $GITHUB_ENV
+          echo "auto_kernel=true" >> $GITHUB_ENV
+          echo "kernel_repo=ophub/kernel" >> $GITHUB_ENV
+          echo "kernel_usage=stable" >> $GITHUB_ENV
+          echo "armbian_fstype=ext4" >> $GITHUB_ENV
+          echo "armbian_storage=save" >> $GITHUB_ENV
+          echo "builder_name=ophub" >> $GITHUB_ENV
+
+      - name: Display Inputs
+        run: |
+          echo "Set Release: ${{ matrix.set_release }}"
+          echo "Armbian Board: ${{ env.armbian_board }}"
+          echo "Armbian Kernel: ${{ env.armbian_kernel }}"
+          echo "Auto Kernel: ${{ env.auto_kernel }}"
+          echo "Kernel Repo: ${{ env.kernel_repo }}"
+          echo "Kernel Usage: ${{ env.kernel_usage }}"
+          echo "Armbian FSType: ${{ env.armbian_fstype }}"
+          echo "Armbian Storage: ${{ env.armbian_storage }}"
+          echo "Builder Name: ${{ env.builder_name }}"
+          echo "Build tag: Armbian_${{ env.armbian_board }}_${{ matrix.set_release }}"
+
 
       - name: Initialization environment
         id: init
@@ -85,6 +212,8 @@ jobs:
         run: |
           df -hT ${PWD}
           git clone -q --single-branch --depth=1 --branch=main https://github.com/armbian/build.git build
+          ln -sf /builder/build ${GITHUB_WORKSPACE}/build
+          ln -sf /builder/build /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/build
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Compile Armbian [ ${{ matrix.set_release }} ]
@@ -93,21 +222,58 @@ jobs:
         if: ${{ steps.down.outputs.status }} == 'success' && !cancelled()
         run: |
           # Compile method and parameter description: https://docs.armbian.com/Developer-Guide_Build-Options
-          echo "build_tag=Armbian_nanopct4_${{ matrix.set_release }}" >> ${GITHUB_OUTPUT}
           cd build/
-              ./compile.sh RELEASE=${{ matrix.set_release }} BOARD=nanopct4 BRANCH=current BUILD_MINIMAL=no \
+              ./compile.sh RELEASE=${{ matrix.set_release }} BOARD=odroidn2 BRANCH=current BUILD_MINIMAL=no \
                            BUILD_ONLY=default HOST=armbian BUILD_DESKTOP=no EXPERT=yes KERNEL_CONFIGURE=no \
-                           COMPRESS_OUTPUTIMAGE="sha,img,xz" SHARE_LOG=yes
-          ls -alh /builder/build/output/images/
+                           COMPRESS_OUTPUTIMAGE="sha" SHARE_LOG=yes
           echo "status=success" >> ${GITHUB_OUTPUT}
 
+      - name: Organize files and clear space
+        id: clean
+        if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+        run: |
+          git clone -q --single-branch --depth=1 --branch=main https://github.com/ophub/amlogic-s9xxx-armbian.git amlogic-s9xxx-armbian.git
+          cp -a amlogic-s9xxx-armbian.git/compile-kernel .
+          ls -alh
+          find . -name "*.img"
+          # Organize and keep essential files, delete unnecessary files
+          chmod +x ${ROOTFS_SCRIPT}
+          ${ROOTFS_SCRIPT} -v ${{ matrix.set_release }}
+          # Output cleaning result information
+          df -hT ${PWD}
+          echo "build_tag=Armbian_${{ env.armbian_board }}_${{ matrix.set_release }}" >> ${GITHUB_OUTPUT}
+          echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Upload Armbian image to Release
         uses: ncipollo/release-action@main
-        if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+        if: ${{ steps.clean.outputs.status }} == 'success' && !cancelled()
         with:
-          tag: ${{ steps.compile.outputs.build_tag }}
-          artifacts: /builder/build/output/images/*
+          tag: ${{ steps.clean.outputs.build_tag }}
+          artifacts: build/output/images/*
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Rebuild Armbian
+        uses: ophub/amlogic-s9xxx-armbian@main
+        if: ${{ steps.clean.outputs.status }} == 'success' && !cancelled()
+        with:
+          # call action.yml in ophub/amlogic-s9xxx-armbian@main
+          build_target: armbian
+          armbian_path: build/output/images/*.img.gz
+          armbian_board: ${{ env.armbian_board }}
+          armbian_kernel: ${{ env.armbian_kernel }}
+          auto_kernel: ${{ env.auto_kernel }}
+          kernel_repo: ${{ env.kernel_repo }}
+          kernel_usage: ${{ env.kernel_usage }}
+          armbian_fstype: ${{ env.armbian_fstype }}
+          builder_name: ${{ env.builder_name }}
+
+      - name: Upload Rebuild image to Release
+        uses: ncipollo/release-action@main
+        if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+        with:
+          tag: ${{ steps.clean.outputs.build_tag }}
+          artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           removeArtifacts: false
           replacesArtifacts: true

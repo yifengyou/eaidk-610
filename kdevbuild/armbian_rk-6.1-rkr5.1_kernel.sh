@@ -134,7 +134,7 @@ make ARCH=arm64 \
   INSTALL_MOD_PATH=$(pwd)/kos \
   modules_install
 
-ls -alh arch/arm64/boot/dts/rockchip/rk3399-emb3531.dtb
+ls -alh arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
 
 # release kernel image
 ls -alh arch/arm64/boot/Image
@@ -142,9 +142,9 @@ md5sum arch/arm64/boot/Image
 cp -a arch/arm64/boot/Image ${WORKDIR}/release/
 
 # release dtb
-ls -alh ./arch/arm64/boot/dts/rockchip/rk3399-emb3531.dtb
-md5sum ./arch/arm64/boot/dts/rockchip/rk3399-emb3531.dtb
-cp -a ./arch/arm64/boot/dts/rockchip/rk3399-emb3531.dtb ${WORKDIR}/release/
+ls -alh ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
+md5sum ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
+cp -a ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb ${WORKDIR}/release/
 
 # release config
 cp .config ${WORKDIR}/release/config-6.1-kdev

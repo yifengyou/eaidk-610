@@ -68,6 +68,20 @@ fi
 
 ls -alh ${WORKDIR}/rockdev/rootfs.img
 
+# update rootfs with official oem firmware/kernel module
+if [ -d ${WORKDIR}/firmware ]; then
+  find ${WORKDIR}/firmware
+  mount ${WORKDIR}/rockdev/rootfs.img /mnt
+
+  cp -a ${WORKDIR}/firmware/* /mnt/
+  ls -alh /mnt/
+
+  sync
+  umount /mnt
+  sync
+fi
+
+
 #==========================================================================#
 #                        build uboot                                       #
 #==========================================================================#

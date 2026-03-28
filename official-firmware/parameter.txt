@@ -1,0 +1,10 @@
+FIRMWARE_VER:8.1
+MACHINE_MODEL:RK3399
+MACHINE_ID:007
+MANUFACTURER: RK3399
+MAGIC: 0x5041524B
+ATAG: 0x00200800
+MACHINE: 3399
+CHECK_MASK: 0x80
+PWR_HLD: 0,0,A,0,1
+CMDLINE: androidboot.baseband=N/A androidboot.selinux=permissive androidboot.veritymode=/dev/block/platform/ff0f0000.dwmmc/by-name/metadata androidboot.hardware=rk30board androidboot.console=ttyFIQ0 root=/dev/mmcblk1p5 rw rootfstype=ext4 mtdparts=rk29xxnand:0x00002000@0x00002000(uboot),0x00002000@0x00004000(trust),0x0000a000@0x00006000(resource),0x00010000@0x00010000(kernel),-@0x00020000(boot)

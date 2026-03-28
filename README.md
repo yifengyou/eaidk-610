@@ -51,6 +51,14 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 
 
+## 免责声明
+
+* 与官方无任何关联
+* 仅学习交流，无任何商业用途
+
+
+
+
 
 
 

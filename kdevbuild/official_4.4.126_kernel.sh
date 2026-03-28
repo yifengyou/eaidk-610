@@ -19,7 +19,7 @@ apt-get install -qq -y --no-install-recommends \
   python3-distutils python3-pip rsync sed sudo \
   u-boot-tools unzip wget xxd xz-utils zip \
   binwalk zlib1g-dev squashfs-tools rar liblz4-tool \
-  genext2fs bc htop openssh-client binwalk libc6-i386
+  genext2fs bc htop openssh-client binwalk libc6-i386 &> /dev/null
 
 localedef -i zh_CN -f UTF-8 zh_CN.UTF-8 || true
 mkdir -p ${WORKDIR}/rockdev
@@ -34,7 +34,7 @@ cd u-boot.git
 ls -alh
 
 if [ ! -d gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu ]; then
-  cat dependency/* | tar -Jxvf -
+  cat dependency/* | tar -Jxf -
 fi
 
 export PATH=$(realpath gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin):$PATH
@@ -43,13 +43,12 @@ make Q= ARCH=arm CROSS_COMPILE="aarch64-linux-gnu-" rk3399_linux_defconfig
 
 make Q= ARCH=arm V=1 CROSS_COMPILE="aarch64-linux-gnu-" ARCHV=aarch64 --jobs=$(nproc)
 
-ls -alh uboot.img
-md5sum uboot.img
-sha256sum uboot.img
+ls -alh uboot.img trust.img
 
-mv uboot.img ${WORKDIR}/release/uboot.img
-ls -alh ${WORKDIR}/release/uboot.img
-md5sum ${WORKDIR}/release/uboot.img
+mv uboot.img trust.img ${WORKDIR}/release/
+ls -alh ${WORKDIR}/release/*.img
+md5sum ${WORKDIR}/release/*.img
+sha256sum ${WORKDIR}/release/*.img
 
 #==========================================================================#
 #                        build kernel                                      #
@@ -60,7 +59,7 @@ cd kernel.git
 ls -alh
 
 if [ ! -d gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu ]; then
-  cat dependency/* | tar -Jxvf -
+  cat dependency/* | tar -Jxf -
 fi
 export PATH=$(realpath gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu/bin/):$PATH
 

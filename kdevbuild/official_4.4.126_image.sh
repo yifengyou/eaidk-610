@@ -76,11 +76,14 @@ cd ${WORKDIR}
 mkdir -p official_eaidk610_image
 cd official_eaidk610_image
 
-
 wget -c https://github.com/yifengyou/eaidk-610/releases/download/official_4.4.126_kernel/uboot.img
+ls -alh uboot.img
+mv uboot.img ${WORKDIR}/rockdev/
+
 wget -c https://github.com/yifengyou/eaidk-610/releases/download/official_4.4.126_kernel/trust.img
-ls -alh uboot.img trust.img
-mv uboot.img trust.img ${WORKDIR}/rockdev/
+ls -alh trust.img
+mv trust.img ${WORKDIR}/rockdev/
+
 ls -alh ${WORKDIR}/rockdev/*.img
 md5sum ${WORKDIR}/rockdev/*.img
 
@@ -117,6 +120,7 @@ md5sum ${WORKDIR}/rockdev/boot.img
 
 # rootfs.img   : ${WORKDIR}/rockdev/rootfs.img
 # uboot.img    : ${WORKDIR}/rockdev/uboot.img
+# trust.img    : ${WORKDIR}/rockdev/trust.img
 # boot.img     : ${WORKDIR}/rockdev/boot.img
 # output       : ${WORKDIR}/release/
 
@@ -130,9 +134,9 @@ cp -a ${WORKDIR}/rockchip-tools.git/RKDevTool-v2.84-EAIDK610 \
   ${WORKDIR}/rockdev_img_tmp/RKDevTool
 mkdir -p ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
 
-cp -a ${WORKDIR}/rockdev/uboot.img ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
-cp -a ${WORKDIR}/rockdev/trust.img ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
-cp -a ${WORKDIR}/rockdev/boot.img ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
+cp -a ${WORKDIR}/rockdev/uboot.img  ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
+cp -a ${WORKDIR}/rockdev/trust.img  ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
+cp -a ${WORKDIR}/rockdev/boot.img   ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
 cp -a ${WORKDIR}/rockdev/rootfs.img ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
 
 cd ${WORKDIR}/rockdev_img_tmp/

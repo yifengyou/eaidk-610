@@ -12,15 +12,26 @@ export BUILD_TAG="EAIDK610_4.4.126_${set_rootfs}"
 apt-get update
 apt-get install -qq -y ca-certificates
 apt-get install -qq -y --no-install-recommends \
-  build-essential ca-certificates ccache curl \
-  device-tree-compiler vim dosfstools fakeroot file \
-  flex gawk gcc-aarch64-linux-gnu git gnupg jq \
-  libssl-dev locales lsb-release lzop make \
-  ncurses-dev parted patch pigz python python3 \
-  python3-distutils python3-pip rsync sed sudo \
-  u-boot-tools unzip wget xxd xz-utils zip \
-  binwalk zlib1g-dev squashfs-tools rar liblz4-tool \
-  genext2fs bc htop openssh-client binwalk libc6-i386 &> /dev/null
+  acl aptly aria2 axel bc binfmt-support binutils-aarch64-linux-gnu bison \
+  bsdextrautils btrfs-progs build-essential busybox ca-certificates ccache \
+  clang coreutils cpio crossbuild-essential-arm64 cryptsetup curl \
+  debian-archive-keyring debian-keyring debootstrap device-tree-compiler \
+  dialog dirmngr distcc dosfstools dwarves e2fsprogs expect f2fs-tools \
+  fakeroot fdisk file flex gawk gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi \
+  gdisk git gnupg gzip htop imagemagick jq kmod lib32ncurses-dev \
+  lib32stdc++6 libbison-dev libc6-dev-armhf-cross libc6-i386 libcrypto++-dev \
+  libelf-dev libfdt-dev libfile-fcntllock-perl libfl-dev libfuse-dev \
+  libgcc-12-dev-arm64-cross libgmp3-dev liblz4-tool libmpc-dev libncurses-dev \
+  libncurses5 libncurses5-dev libncursesw5-dev libpython2.7-dev \
+  libpython3-dev libssl-dev libusb-1.0-0-dev linux-base lld llvm locales \
+  lsb-release lz4 lzma lzop make mtools ncurses-base ncurses-term \
+  nfs-kernel-server ntpdate openssl p7zip p7zip-full parallel parted patch \
+  patchutils pbzip2 pigz pixz pkg-config pv python2 python2-dev python3 \
+  python3-dev python3-distutils python3-pip python3-setuptools \
+  python-is-python3 qemu-user-static rar rdfind rename rsync sed \
+  squashfs-tools swig tar tree u-boot-tools udev unzip util-linux uuid \
+  uuid-dev uuid-runtime vim wget whiptail xfsprogs xsltproc xxd xz-utils \
+  zip zlib1g-dev zstd binwalk ripgrep sudo &> /dev/null
 
 localedef -i zh_CN -f UTF-8 zh_CN.UTF-8 || true
 mkdir -p ${WORKDIR}/rockdev
@@ -65,10 +76,11 @@ cd ${WORKDIR}
 mkdir -p official_eaidk610_image
 cd official_eaidk610_image
 
+
 wget -c https://github.com/yifengyou/eaidk-610/releases/download/official_4.4.126_kernel/uboot.img
 wget -c https://github.com/yifengyou/eaidk-610/releases/download/official_4.4.126_kernel/trust.img
 ls -alh uboot.img trust.img
-mv uboot.img trust.img ${WORKDIR}/rockdev/uboot.img
+mv uboot.img trust.img ${WORKDIR}/rockdev/
 ls -alh ${WORKDIR}/rockdev/*.img
 md5sum ${WORKDIR}/rockdev/*.img
 

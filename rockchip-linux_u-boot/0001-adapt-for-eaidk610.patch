@@ -1,4 +1,4 @@
-From aa8af543bdafd506b04d5e9f5f8993158aeb86f9 Mon Sep 17 00:00:00 2001
+From bd736647114dc1e12aeadb84763403c5aa8e44ce Mon Sep 17 00:00:00 2001
 From: yifengyou <842056007@qq.com>
 Date: Sun, 29 Mar 2026 12:03:29 +0800
 Subject: [PATCH] adapt for eaidk610
@@ -34,7 +34,7 @@ index b802014053..32ed483706 100644
  		return ERROR;
  	}
 diff --git a/configs/evb-rk3399_defconfig b/configs/evb-rk3399_defconfig
-index 90c472ec2a..a75691c4a2 100644
+index 90c472ec2a..c260b59fcb 100644
 --- a/configs/evb-rk3399_defconfig
 +++ b/configs/evb-rk3399_defconfig
 @@ -102,3 +102,7 @@ CONFIG_LCD=y
@@ -44,7 +44,7 @@ index 90c472ec2a..a75691c4a2 100644
 +CONFIG_UBOOT_NUM=2
 +CONFIG_UBOOT_SIZE_KB=2048
 +CONFIG_BOOTCOMMAND="sysboot mmc 0:3 any 0x00500000 extlinux.conf"
-+CONFIG_BOOTDELAY=9
++CONFIG_BOOTDELAY=6
 diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
 index 5565c7ce53..5b0a309144 100644
 --- a/include/configs/evb_rk3399.h

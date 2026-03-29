@@ -68,6 +68,19 @@ fi
 
 ls -alh ${WORKDIR}/rockdev/rootfs.img
 
+# update rootfs with official oem firmware/kernel module
+if [ -d ${WORKDIR}/firmware ]; then
+  find ${WORKDIR}/firmware
+  mount ${WORKDIR}/rockdev/rootfs.img /mnt
+
+  cp -a ${WORKDIR}/firmware/* /mnt/
+  ls -alh /mnt/
+
+  sync
+  umount /mnt
+  sync
+fi
+
 #==========================================================================#
 #                        build uboot                                       #
 #==========================================================================#
@@ -158,6 +171,7 @@ touch /mnt/initrd.img-6.6-kdev
 # add official kernel
 cp ${WORKDIR}/official-firmware/rk3399-eaidk-linux.dtb /mnt/dtb/
 cp ${WORKDIR}/official-firmware/Image /mnt/
+sync
 
 cat >/mnt/extlinux.conf <<EOF
 ## /extlinux/extlinux.conf
@@ -170,7 +184,7 @@ cat >/mnt/extlinux.conf <<EOF
 default l0
 menu title Kdev U-Boot menu
 prompt 1
-timeout 90
+timeout 60
 
 
 label l0

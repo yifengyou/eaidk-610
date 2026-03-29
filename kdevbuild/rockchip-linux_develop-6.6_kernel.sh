@@ -36,6 +36,38 @@ mkdir -p ${WORKDIR}/rockdev
 mkdir -p ${WORKDIR}/release
 
 #==========================================================================#
+#                        build uboot                                       #
+#==========================================================================#
+cd ${WORKDIR}/
+git clone -b next-dev https://github.com/rockchip-linux/u-boot u-boot.git
+cd u-boot.git
+ls -alh
+
+# apply patch
+if ls ${WORKDIR}/rockchip-linux_u-boot/*.patch >/dev/null 2>&1; then
+  git config --global user.name yifengyou
+  git config --global user.email 842056007@qq.com
+  git am ${WORKDIR}/rockchip-linux_u-boot/*.patch
+fi
+
+# build uboot
+make V= ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- evb-rk3399_defconfig
+./make.sh evb-rk3399
+
+# list output
+ls -alh uboot.img trust.img
+strings uboot.img |grep "bootcmd="
+grep CONFIG_UBOOT_ .config
+grep CONFIG_BOOTDELAY .config
+
+ls -alh uboot.img trust.img
+mv uboot.img trust.img ${WORKDIR}/release/
+
+ls -alh ${WORKDIR}/release/*.img
+md5sum ${WORKDIR}/release/*.img
+
+
+#==========================================================================#
 #                        build kernel                                      #
 #==========================================================================#
 cd ${WORKDIR}
@@ -62,7 +94,7 @@ make ARCH=arm64 \
   KBUILD_BUILD_USER="builder" \
   KBUILD_BUILD_HOST="kdevbuilder" \
   LOCALVERSION=-kdev \
-  rk3399-emb3531_defconfig
+  rk3399-eaidk610_defconfig
 
 make ARCH=arm64 \
   CROSS_COMPILE=aarch64-linux-gnu- \

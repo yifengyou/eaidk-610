@@ -1,0 +1,148 @@
+From aa8af543bdafd506b04d5e9f5f8993158aeb86f9 Mon Sep 17 00:00:00 2001
+From: yifengyou <842056007@qq.com>
+Date: Sun, 29 Mar 2026 12:03:29 +0800
+Subject: [PATCH] adapt for eaidk610
+
+Signed-off-by: yifengyou <842056007@qq.com>
+
+diff --git a/common/lrz.c b/common/lrz.c
+index 1c175f9c7b..a32d60d68a 100644
+--- a/common/lrz.c
++++ b/common/lrz.c
+@@ -2398,7 +2398,7 @@ moredata:
+ 					|| zi->bytes_received > last_bps / 2 + last_rxbytes)) {
+ 				int minleft =  0;
+ 				int secleft =  0;
+-				time_t now;
++				time_t now = 0;
+ 				ulong d;
+ 				//xil_printf("%s(): L%d debug\n\r", __func__, __LINE__);
+ 				d=timing(0,&now);
+diff --git a/common/rbsb.c b/common/rbsb.c
+index b802014053..32ed483706 100644
+--- a/common/rbsb.c
++++ b/common/rbsb.c
+@@ -480,9 +480,9 @@ io_mode(int fd, int n)
+ #ifdef TIOCFLUSH
+ 		{ int x=1; ioctl(fd,TIOCFLUSH,&x); }
+ #endif
++		return OK;
+ #endif
+ 
+-		return OK;
+ 	default:
+ 		return ERROR;
+ 	}
+diff --git a/configs/evb-rk3399_defconfig b/configs/evb-rk3399_defconfig
+index 90c472ec2a..a75691c4a2 100644
+--- a/configs/evb-rk3399_defconfig
++++ b/configs/evb-rk3399_defconfig
+@@ -102,3 +102,7 @@ CONFIG_LCD=y
+ CONFIG_USE_TINY_PRINTF=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_UBOOT_NUM=2
++CONFIG_UBOOT_SIZE_KB=2048
++CONFIG_BOOTCOMMAND="sysboot mmc 0:3 any 0x00500000 extlinux.conf"
++CONFIG_BOOTDELAY=9
+diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
+index 5565c7ce53..5b0a309144 100644
+--- a/include/configs/evb_rk3399.h
++++ b/include/configs/evb_rk3399.h
+@@ -10,8 +10,13 @@
+ #include <configs/rk3399_common.h>
+ 
+ #ifndef CONFIG_SPL_BUILD
++
+ #undef CONFIG_BOOTCOMMAND
++#undef RKIMG_BOOTCOMMAND
++
++#define RKIMG_BOOTCOMMAND "sysboot mmc 0:3 any 0x00500000 extlinux.conf"
+ #define CONFIG_BOOTCOMMAND RKIMG_BOOTCOMMAND
++
+ #endif
+ 
+ #define CONFIG_MMC_SDHCI_SDMA
+diff --git a/kdev-build.sh b/kdev-build.sh
+new file mode 100755
+index 0000000000..54ca0af09d
+--- /dev/null
++++ b/kdev-build.sh
+@@ -0,0 +1,14 @@
++#!/bin/bash
++
++set -xe
++
++make V= ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- evb-rk3399_defconfig
++
++./make.sh evb-rk3399
++
++ls -alh uboot.img trust.img
++
++strings uboot.img |grep "bootcmd="
++grep CONFIG_UBOOT_ .config
++grep CONFIG_BOOTDELAY .config
++
+diff --git a/kdev-genpatch.sh b/kdev-genpatch.sh
+new file mode 100755
+index 0000000000..896400d4f1
+--- /dev/null
++++ b/kdev-genpatch.sh
+@@ -0,0 +1,14 @@
++#!/bin/bash
++
++set -xe
++
++
++git format-patch -p1
++
++ls -alh 0001-adapt-for-eaidk610.patch
++
++mkdir -p /rockchip/eaidk-610.git/rockchip-linux_u-boot
++
++cp 0001-adapt-for-eaidk610.patch /rockchip/eaidk-610.git/rockchip-linux_u-boot/
++ls -alh /rockchip/eaidk-610.git/rockchip-linux_u-boot
++
+diff --git a/kdev-menuconfig.sh b/kdev-menuconfig.sh
+new file mode 100755
+index 0000000000..39870761db
+--- /dev/null
++++ b/kdev-menuconfig.sh
+@@ -0,0 +1,6 @@
++#!/bin/bash
++
++set -xe
++
++make V= ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- menuconfig
++
+diff --git a/kdev-savedefconfig.sh b/kdev-savedefconfig.sh
+new file mode 100755
+index 0000000000..11f1f9c4dc
+--- /dev/null
++++ b/kdev-savedefconfig.sh
+@@ -0,0 +1,9 @@
++#!/bin/bash
++
++set -xe
++
++make savedefconfig
++diff defconfig configs/evb-rk3399_defconfig
++cp -a defconfig configs/evb-rk3399_defconfig
++md5sum defconfig configs/evb-rk3399_defconfig
++
+diff --git a/make.sh b/make.sh
+index de02200dca..35befad81e 100755
+--- a/make.sh
++++ b/make.sh
+@@ -13,7 +13,7 @@ CMD_ARGS=$1
+ ########################################### User can modify #############################################
+ RKBIN_TOOLS=../rkbin/tools
+ CROSS_COMPILE_ARM32=../prebuilts/gcc/linux-x86/arm/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+-CROSS_COMPILE_ARM64=../prebuilts/gcc/linux-x86/aarch64/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-
++CROSS_COMPILE_ARM64=/usr/bin/aarch64-linux-gnu-
+ ########################################### User not touch #############################################
+ # Declare global INI file searching index name for every chip, update in select_chip_info()
+ RKCHIP=
+-- 
+2.34.1
+

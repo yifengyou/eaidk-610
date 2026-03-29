@@ -1,15 +1,15 @@
-From 9909b6e483deb08a5274bab2a2826b924ee6437d Mon Sep 17 00:00:00 2001
+From d4d3a208758013565ccae31cdc42e3c202392591 Mon Sep 17 00:00:00 2001
 From: yifengyou <842056007@qq.com>
 Date: Sun, 29 Mar 2026 12:56:37 +0800
 Subject: [PATCH] adapt eaidk610 with rockchip-linux develop-6.6
 
 Signed-off-by: yifengyou <842056007@qq.com>
 
-diff --git a/arch/arm64/configs/rk3388-eaidk-610_defconfig b/arch/arm64/configs/rk3388-eaidk-610_defconfig
+diff --git a/arch/arm64/configs/rk3399-eaidk-610_defconfig b/arch/arm64/configs/rk3399-eaidk-610_defconfig
 new file mode 100644
 index 000000000000..54c808e33404
 --- /dev/null
-+++ b/arch/arm64/configs/rk3388-eaidk-610_defconfig
++++ b/arch/arm64/configs/rk3399-eaidk-610_defconfig
 @@ -0,0 +1,844 @@
 +CONFIG_WERROR=y
 +# CONFIG_LOCALVERSION_AUTO is not set
@@ -932,7 +932,7 @@ index 000000000000..fe8353880387
 +
 diff --git a/kdev-build.sh b/kdev-build.sh
 new file mode 100755
-index 000000000000..acf9a14767b7
+index 000000000000..ec8204b52cde
 --- /dev/null
 +++ b/kdev-build.sh
 @@ -0,0 +1,77 @@
@@ -947,7 +947,7 @@ index 000000000000..acf9a14767b7
 +  KBUILD_BUILD_USER="builder" \
 +  KBUILD_BUILD_HOST="kdevbuilder" \
 +  LOCALVERSION=-kdev \
-+  rk3388-eaidk-610_defconfig
++  rk3399-eaidk-610_defconfig
 +
 +make ARCH=arm64 \
 +  CROSS_COMPILE=aarch64-linux-gnu- \
@@ -1051,7 +1051,7 @@ index 000000000000..778647eb43de
 +
 diff --git a/kdev-savedefconfig.sh b/kdev-savedefconfig.sh
 new file mode 100755
-index 000000000000..1e39fe03c265
+index 000000000000..48cab205681e
 --- /dev/null
 +++ b/kdev-savedefconfig.sh
 @@ -0,0 +1,14 @@
@@ -1067,7 +1067,7 @@ index 000000000000..1e39fe03c265
 +  LOCALVERSION=-kdev \
 +  savedefconfig
 +
-+cp -a defconfig ./arch/arm64/configs/rk3388-eaidk-610_defconfig
++cp -a defconfig ./arch/arm64/configs/rk3399-eaidk-610_defconfig
 +
 -- 
 2.34.1

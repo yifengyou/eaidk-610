@@ -94,7 +94,7 @@ make ARCH=arm64 \
   KBUILD_BUILD_USER="builder" \
   KBUILD_BUILD_HOST="kdevbuilder" \
   LOCALVERSION=-kdev \
-  rk3399-eaidk610_defconfig
+  rk3399-eaidk-610_defconfig
 
 make ARCH=arm64 \
   CROSS_COMPILE=aarch64-linux-gnu- \
@@ -123,7 +123,7 @@ make ARCH=arm64 \
   dtbs \
    -j$(nproc)
 
-ls -alh arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
+ls -alh arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
 
 make ARCH=arm64 \
   CROSS_COMPILE=aarch64-linux-gnu- \
@@ -154,9 +154,9 @@ md5sum arch/arm64/boot/Image
 cp -a arch/arm64/boot/Image ${WORKDIR}/release/
 
 # release dtb
-ls -alh ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
-md5sum ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
-cp -a ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb ${WORKDIR}/release/
+ls -alh ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
+md5sum ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
+cp -a ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb ${WORKDIR}/release/
 
 # release config
 cp .config ${WORKDIR}/release/config-6.6-kdev

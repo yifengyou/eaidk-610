@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Show environment
         id: basic_info
@@ -81,6 +81,7 @@ jobs:
 
       - name: Upload Kernel to Release
         uses: ncipollo/release-action@main
+        timeout-minutes: 8
         with:
           tag: official_4.4.126_kernel
           artifacts: /builder/release/*
@@ -352,7 +353,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Show environment
         id: basic_info
@@ -411,6 +412,7 @@ jobs:
 
       - name: Upload Image to Release
         uses: ncipollo/release-action@main
+        timeout-minutes: 8
         with:
           tag: official_4.4.126_image
           artifacts: /builder/release/*

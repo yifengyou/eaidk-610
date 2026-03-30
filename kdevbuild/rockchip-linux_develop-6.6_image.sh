@@ -144,18 +144,6 @@ if [ -d kos/lib/modules ]; then
   sync
 fi
 
-# update rootfs with firmware
-if [ -d ${WORKDIR}/firmware ]; then
-  find ${WORKDIR}/firmware
-  mount ${WORKDIR}/rockdev/rootfs.img /mnt
-  mkdir -p /mnt/lib/firmware
-  cp -a ${WORKDIR}/firmware/* /mnt/lib/firmware/
-  ls -alh /mnt/lib/firmware/
-  sync
-  umount /mnt
-  sync
-fi
-
 # generate boot.img
 dd if=/dev/zero of=boot.img bs=1M count=256
 mkfs.ext2 -U 7A3F0000-0000-446A-8000-702F00006273 -L kdevboot boot.img

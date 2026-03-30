@@ -30,7 +30,8 @@ apt-get install -qq -y --no-install-recommends \
   python-is-python3 qemu-user-static rar rdfind rename rsync sed \
   squashfs-tools swig tar tree u-boot-tools udev unzip util-linux uuid \
   uuid-dev uuid-runtime vim wget whiptail xfsprogs xsltproc xxd xz-utils \
-  zip zlib1g-dev zstd binwalk ripgrep sudo
+  zip zlib1g-dev zstd binwalk ripgrep  sudo libgnutls28-dev python3-pyelftools &> /dev/null
+
 localedef -i zh_CN -f UTF-8 zh_CN.UTF-8 || true
 mkdir -p ${WORKDIR}/rockdev
 mkdir -p ${WORKDIR}/release
@@ -39,29 +40,32 @@ mkdir -p ${WORKDIR}/release
 #                        build uboot                                       #
 #==========================================================================#
 cd ${WORKDIR}/
-git clone -b stable-5.10-rock5 https://github.com/radxa/u-boot.git u-boot.git
+git clone -b next-dev https://github.com/rockchip-linux/u-boot u-boot.git
 cd u-boot.git
 ls -alh
 
 # apply patch
-if ls ${WORKDIR}/radxa-uboot/*.patch >/dev/null 2>&1; then
+if ls ${WORKDIR}/rockchip-linux_u-boot/*.patch >/dev/null 2>&1; then
   git config --global user.name yifengyou
   git config --global user.email 842056007@qq.com
-  git am ${WORKDIR}/radxa-uboot/*.patch
+  git am ${WORKDIR}/rockchip-linux_u-boot/*.patch
 fi
 
-tool=$(which aarch64-linux-gnu-gcc)
-export CROSS_COMPILE_ARM64="${tool%gcc}"
-echo "using gcc: [${CROSS_COMPILE_ARM64}]"
+# build uboot
+make V= ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- evb-rk3399_defconfig
+./make.sh evb-rk3399
 
-rm -rf spl/u-boot-spl*
-make CROSS_COMPILE=${CROSS_COMPILE_ARM64} rockchip-rk3399_defconfig
-make CROSS_COMPILE=${CROSS_COMPILE_ARM64} -j$(nproc)
-./make.sh rk3399
-mv uboot.img ${WORKDIR}/release/uboot.img
+# list output
+ls -alh uboot.img trust.img
+strings uboot.img |grep "bootcmd="
+grep CONFIG_UBOOT_ .config
+grep CONFIG_BOOTDELAY .config
 
-ls -alh ${WORKDIR}/release/uboot.img
-md5sum ${WORKDIR}/release/uboot.img
+ls -alh uboot.img trust.img
+mv uboot.img trust.img ${WORKDIR}/release/
+
+ls -alh ${WORKDIR}/release/*.img
+md5sum ${WORKDIR}/release/*.img
 
 
 #==========================================================================#
@@ -91,7 +95,7 @@ make ARCH=arm64 \
   KBUILD_BUILD_USER="builder" \
   KBUILD_BUILD_HOST="kdevbuilder" \
   LOCALVERSION=-kdev \
-  owl_rk3399_defconfig
+  rk3399-eaidk-610_defconfig
 
 make ARCH=arm64 \
   CROSS_COMPILE=aarch64-linux-gnu- \
@@ -134,7 +138,7 @@ make ARCH=arm64 \
   INSTALL_MOD_PATH=$(pwd)/kos \
   modules_install
 
-ls -alh arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
+ls -alh arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
 
 # release kernel image
 ls -alh arch/arm64/boot/Image
@@ -142,9 +146,9 @@ md5sum arch/arm64/boot/Image
 cp -a arch/arm64/boot/Image ${WORKDIR}/release/
 
 # release dtb
-ls -alh ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
-md5sum ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
-cp -a ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb ${WORKDIR}/release/
+ls -alh ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
+md5sum ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
+cp -a ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb ${WORKDIR}/release/
 
 # release config
 cp .config ${WORKDIR}/release/config-6.1-kdev

@@ -96,6 +96,7 @@ jobs:
             - **dtb/** - 设备树文件
             - **kos.tar.gz** - 内核模块压缩包
             - **uboot.img** - uboot 镜像
+            - **trust.img** - trust 镜像
 
             ## 重要提示
             > **此发布为中间构建产物，非完整固件！**
@@ -453,6 +454,7 @@ jobs:
                     ├── package-file
                     ├── parameter.txt
                     ├── rootfs.img
+                    ├── trust.img
                     └── uboot.img
             ```
 

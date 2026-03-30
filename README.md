@@ -10,12 +10,9 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ## 相关站点
 
-* 仓库地址：<https://github.com/yifengyou/eaidk-610>
-
-EAIDK610-资料分享：
-
-链接: <https://pan.baidu.com/s/5kfXUfjcR2UNaXY2xbO6u1A?> 
-
+* [EAIDK610 网盘资料分享](https://pan.baidu.com/s/5kfXUfjcR2UNaXY2xbO6u1A?)
+* [官方内核镜像仓](https://github.com/yifengyou/eaidk-610/releases/tag/official_4.4.126_image)
+* [rockchip-linux仓库develop-6.6内核镜像仓](https://github.com/yifengyou/eaidk-610/releases/tag/rockchip-linux_develop-6.6_image)
 
 ## 目录
 

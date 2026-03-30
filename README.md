@@ -12,6 +12,11 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 * 仓库地址：<https://github.com/yifengyou/eaidk-610>
 
+EAIDK610-资料分享：
+
+链接: <https://pan.baidu.com/s/5kfXUfjcR2UNaXY2xbO6u1A?> 
+
+
 ## 目录
 
 * [eaidk-610开发板介绍](docs/eaidk-610开发板介绍.md)
@@ -92,19 +97,12 @@ booti 0x02000000 - 0x01f00000
 * 关闭终端输出大量内核日志
 
 ```shell
+
 echo 0 > /proc/sys/kernel/printk
+systemctl daemon-reload
+mount /dev/mmcblk1p3 /boot/
+
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 
 

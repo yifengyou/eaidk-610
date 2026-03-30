@@ -31,7 +31,8 @@ apt-get install -qq -y --no-install-recommends \
   python-is-python3 qemu-user-static rar rdfind rename rsync sed \
   squashfs-tools swig tar tree u-boot-tools udev unzip util-linux uuid \
   uuid-dev uuid-runtime vim wget whiptail xfsprogs xsltproc xxd xz-utils \
-  zip zlib1g-dev zstd binwalk ripgrep sudo
+  zip zlib1g-dev zstd binwalk ripgrep sudo libgnutls28-dev python3-pyelftools &> /dev/null
+
 localedef -i zh_CN -f UTF-8 zh_CN.UTF-8 || true
 mkdir -p ${WORKDIR}/rockdev
 mkdir -p ${WORKDIR}/release
@@ -67,6 +68,19 @@ fi
 
 ls -alh ${WORKDIR}/rockdev/rootfs.img
 
+# update rootfs with official oem firmware/kernel module
+if [ -d ${WORKDIR}/firmware ]; then
+  find ${WORKDIR}/firmware
+  mount ${WORKDIR}/rockdev/rootfs.img /mnt
+
+  cp -a ${WORKDIR}/firmware/* /mnt/
+  ls -alh /mnt/
+
+  sync
+  umount /mnt
+  sync
+fi
+
 #==========================================================================#
 #                        build uboot                                       #
 #==========================================================================#
@@ -75,13 +89,14 @@ cd ${WORKDIR}
 mkdir -p rockchip-linux_develop-6.1
 cd rockchip-linux_develop-6.1
 
-wget -c https://github.com/yifengyou/eaidk-610/releases/download/uboot_v2017/uboot.img
-wget -c https://github.com/yifengyou/eaidk-610/releases/download/uboot_v2017/trust.img
+wget -c https://github.com/yifengyou/eaidk-610/releases/download/rockchip-linux_develop-6.1_kernel/uboot.img
+wget -c https://github.com/yifengyou/eaidk-610/releases/download/rockchip-linux_develop-6.1_kernel/trust.img
 ls -alh uboot.img trust.img
 mv uboot.img ${WORKDIR}/rockdev/uboot.img
 mv trust.img ${WORKDIR}/rockdev/trust.img
 ls -alh ${WORKDIR}/rockdev/*.img
 md5sum ${WORKDIR}/rockdev/*.img
+sha256sum ${WORKDIR}/rockdev/*.img
 
 #==========================================================================#
 #                        build kernel                                      #
@@ -103,9 +118,9 @@ wget -c https://github.com/yifengyou/eaidk-610/releases/download/rockchip-linux_
 ls -alh System.map-6.1-kdev
 md5sum System.map-6.1-kdev
 
-wget -c https://github.com/yifengyou/eaidk-610/releases/download/rockchip-linux_develop-6.1_kernel/rk3399-eaidk-linux.dtb
-ls -alh rk3399-eaidk-linux.dtb
-md5sum rk3399-eaidk-linux.dtb
+wget -c https://github.com/yifengyou/eaidk-610/releases/download/rockchip-linux_develop-6.1_kernel/rk3399-eaidk-610.dtb
+ls -alh rk3399-eaidk-610.dtb
+md5sum rk3399-eaidk-610.dtb
 
 wget -c https://github.com/yifengyou/eaidk-610/releases/download/rockchip-linux_develop-6.1_kernel/kos.tar.gz
 ls -alh kos.tar.gz
@@ -147,11 +162,16 @@ mkfs.ext2 -U 7A3F0000-0000-446A-8000-702F00006273 -L kdevboot boot.img
 mount boot.img /mnt
 
 mkdir -p /mnt/dtb
-cp -a rk3399-eaidk-linux.dtb /mnt/dtb/
+cp -a rk3399-eaidk-610.dtb /mnt/dtb/
 cp -f Image /mnt/vmlinuz-6.1-kdev
 cp -f config-6.1-kdev /mnt/config-6.1-kdev
 cp -f System.map-6.1-kdev /mnt/System.map-6.1-kdev
 touch /mnt/initrd.img-6.1-kdev
+
+# add official kernel
+cp ${WORKDIR}/official-firmware/rk3399-eaidk-linux.dtb /mnt/dtb/
+cp ${WORKDIR}/official-firmware/Image /mnt/
+sync
 
 cat >/mnt/extlinux.conf <<EOF
 ## /extlinux/extlinux.conf
@@ -164,22 +184,29 @@ cat >/mnt/extlinux.conf <<EOF
 default l0
 menu title Kdev U-Boot menu
 prompt 1
-timeout 90
+timeout 60
 
 
 label l0
 	menu label Linux kernel 6.1-kdev
 	linux vmlinuz-6.1-kdev
 	initrd initrd.img-6.1-kdev
-	fdt /dtb/rk3399-eaidk-linux.dtb
-	append root=PARTUUID=614e0000-0000-4b53-8000-1d28000054a9 rootwait rw console=ttyS2,1500000 console=tty1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory net.ifnames=0 biosdevname=0 level=10 loglevel=10 selinux=0 crashkernel=384M-:128M systemd.mask=systemd-growfs@-.service rockchip.dmc_freq=528000 video=HDMI-A-1:1920x1080@60
+	fdt /dtb/rk3399-eaidk-610.dtb
+	append root=PARTUUID=614e0000-0000-4b53-8000-1d28000054a9 rootwait rw console=ttyS2,1500000 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory net.ifnames=0 biosdevname=0 level=10 loglevel=10 selinux=0 crashkernel=384M-:128M systemd.mask=systemd-growfs@-.service rockchip.dmc_freq=528000 video=HDMI-A-1:1920x1080@60
 
 label l0r
 	menu label Linux kernel 6.1-kdev (rescue target)
 	linux vmlinuz-6.1-kdev
 	initrd initrd.img-6.1-kdev
+	fdt /dtb/rk3399-eaidk-610.dtb
+	append root=PARTUUID=614e0000-0000-4b53-8000-1d28000054a9 rootwait rw console=ttyS2,1500000 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory net.ifnames=0 biosdevname=0 level=10 loglevel=10 selinux=0 crashkernel=384M-:128M single
+
+label l2
+	menu label official
+	linux Image
+	initrd initrd.img-6.1-kdev
 	fdt /dtb/rk3399-eaidk-linux.dtb
-	append root=PARTUUID=614e0000-0000-4b53-8000-1d28000054a9 rootwait rw console=ttyS2,1500000 console=tty1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory net.ifnames=0 biosdevname=0 level=10 loglevel=10 selinux=0 crashkernel=384M-:128M single
+	append root=PARTUUID=614e0000-0000-4b53-8000-1d28000054a9 rootwait rw console=ttyS2,1500000 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory net.ifnames=0 biosdevname=0 level=10 loglevel=10 selinux=0 crashkernel=384M-:128M systemd.mask=systemd-growfs@-.service rockchip.dmc_freq=528000 video=HDMI-A-1:1920x1080@60
 
 EOF
 
@@ -202,7 +229,6 @@ md5sum boot.img
 cp -a boot.img ${WORKDIR}/rockdev/boot.img
 ls -alh ${WORKDIR}/rockdev/boot.img
 md5sum ${WORKDIR}/rockdev/boot.img
-
 
 #==========================================================================#
 # Script Purpose: Generate Rockchip Firmware Image with RKDevTool          #
@@ -239,8 +265,12 @@ cp -a ${WORKDIR}/rockchip-tools.git/RKDevTool-v2.84-EAIDK610 \
 mkdir -p ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
 
 cp -a ${WORKDIR}/rockdev/uboot.img ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
+cp -a ${WORKDIR}/rockdev/trust.img ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
 cp -a ${WORKDIR}/rockdev/boot.img ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
 cp -a ${WORKDIR}/rockdev/rootfs.img ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/
+
+md5sum ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/*
+sha256sum ${WORKDIR}/rockdev_img_tmp/RKDevTool/rockdev/image/*
 
 cd ${WORKDIR}/rockdev_img_tmp/
 rar a ${WORKDIR}/release/${BUILD_TAG} RKDevTool

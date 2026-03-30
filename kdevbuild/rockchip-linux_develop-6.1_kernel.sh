@@ -30,16 +30,48 @@ apt-get install -qq -y --no-install-recommends \
   python-is-python3 qemu-user-static rar rdfind rename rsync sed \
   squashfs-tools swig tar tree u-boot-tools udev unzip util-linux uuid \
   uuid-dev uuid-runtime vim wget whiptail xfsprogs xsltproc xxd xz-utils \
-  zip zlib1g-dev zstd binwalk ripgrep sudo
+  zip zlib1g-dev zstd binwalk ripgrep sudo libgnutls28-dev python3-pyelftools
 localedef -i zh_CN -f UTF-8 zh_CN.UTF-8 || true
 mkdir -p ${WORKDIR}/rockdev
 mkdir -p ${WORKDIR}/release
 
 #==========================================================================#
+#                        build uboot                                       #
+#==========================================================================#
+cd ${WORKDIR}/
+git clone -b next-dev https://github.com/rockchip-linux/u-boot u-boot.git
+cd u-boot.git
+ls -alh
+
+# apply patch
+if ls ${WORKDIR}/rockchip-linux_u-boot/*.patch >/dev/null 2>&1; then
+  git config --global user.name yifengyou
+  git config --global user.email 842056007@qq.com
+  git am ${WORKDIR}/rockchip-linux_u-boot/*.patch
+fi
+
+# build uboot
+make V= ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- evb-rk3399_defconfig
+./make.sh evb-rk3399
+
+# list output
+ls -alh uboot.img trust.img
+strings uboot.img |grep "bootcmd="
+grep CONFIG_UBOOT_ .config
+grep CONFIG_BOOTDELAY .config
+
+ls -alh uboot.img trust.img
+mv uboot.img trust.img ${WORKDIR}/release/
+
+ls -alh ${WORKDIR}/release/*.img
+md5sum ${WORKDIR}/release/*.img
+
+
+#==========================================================================#
 #                        build kernel                                      #
 #==========================================================================#
 cd ${WORKDIR}
-git clone -b develop-6.1 https://github.com/rockchip-linux/kernel rockchip-linux_kernel.git
+git clone --depth 1 -b develop-6.1 https://github.com/rockchip-linux/kernel rockchip-linux_kernel.git
 cd rockchip-linux_kernel.git
 ls -alh
 
@@ -62,7 +94,7 @@ make ARCH=arm64 \
   KBUILD_BUILD_USER="builder" \
   KBUILD_BUILD_HOST="kdevbuilder" \
   LOCALVERSION=-kdev \
-  rk3399-emb3531_defconfig
+  rk3399-eaidk-610_defconfig
 
 make ARCH=arm64 \
   CROSS_COMPILE=aarch64-linux-gnu- \
@@ -70,7 +102,6 @@ make ARCH=arm64 \
   KBUILD_BUILD_HOST="kdevbuilder" \
   LOCALVERSION=-kdev \
   olddefconfig
-
 
 # show config
 cat .config
@@ -92,7 +123,7 @@ make ARCH=arm64 \
   dtbs \
    -j$(nproc)
 
-ls -alh arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
+ls -alh arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
 
 make ARCH=arm64 \
   CROSS_COMPILE=aarch64-linux-gnu- \
@@ -123,9 +154,9 @@ md5sum arch/arm64/boot/Image
 cp -a arch/arm64/boot/Image ${WORKDIR}/release/
 
 # release dtb
-ls -alh ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
-md5sum ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb
-cp -a ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-linux.dtb ${WORKDIR}/release/
+ls -alh ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
+md5sum ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb
+cp -a ./arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dtb ${WORKDIR}/release/
 
 # release config
 cp .config ${WORKDIR}/release/config-6.1-kdev

@@ -14,6 +14,8 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [官方内核镜像仓](https://github.com/yifengyou/eaidk-610/releases/tag/official_4.4.126_image)
 * [rockchip-linux仓库develop-6.6内核镜像仓](https://github.com/yifengyou/eaidk-610/releases/tag/rockchip-linux_develop-6.6_image)
 
+**QQ交流群：1077157330（仅开发板技术交流，请务必严格遵守法律法规）**
+
 ## 目录
 
 * [eaidk-610开发板介绍](docs/eaidk-610开发板介绍.md)

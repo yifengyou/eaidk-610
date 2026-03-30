@@ -118,9 +118,9 @@ wget -c https://github.com/yifengyou/eaidk-610/releases/download/radxa_linux-6.1
 ls -alh System.map-6.1-kdev
 md5sum System.map-6.1-kdev
 
-wget -c https://github.com/yifengyou/eaidk-610/releases/download/radxa_linux-6.1-stan-rkr5.1_kernel/rk3399-eaidk-linux.dtb
-ls -alh rk3399-eaidk-linux.dtb
-md5sum rk3399-eaidk-linux.dtb
+wget -c https://github.com/yifengyou/eaidk-610/releases/download/radxa_linux-6.1-stan-rkr5.1_kernel/rk3399-eaidk-610.dtb
+ls -alh rk3399-eaidk-610.dtb
+md5sum rk3399-eaidk-610.dtb
 
 wget -c https://github.com/yifengyou/eaidk-610/releases/download/radxa_linux-6.1-stan-rkr5.1_kernel/kos.tar.gz
 ls -alh kos.tar.gz
@@ -150,7 +150,7 @@ mkfs.ext2 -U 7A3F0000-0000-446A-8000-702F00006273 -L kdevboot boot.img
 mount boot.img /mnt
 
 mkdir -p /mnt/dtb
-cp -a rk3399-eaidk-linux.dtb /mnt/dtb/
+cp -a rk3399-eaidk-610.dtb /mnt/dtb/
 cp -f Image /mnt/vmlinuz-6.1-kdev
 cp -f config-6.1-kdev /mnt/config-6.1-kdev
 cp -f System.map-6.1-kdev /mnt/System.map-6.1-kdev
@@ -179,14 +179,14 @@ label l0
 	menu label Linux kernel linux-6.1-stan-rkr5.1-kdev
 	linux vmlinuz-6.1-kdev
 	initrd initrd.img-6.1-kdev
-	fdt /dtb/rk3399-eaidk-linux.dtb
+	fdt /dtb/rk3399-eaidk-610.dtb
 	append root=PARTUUID=614e0000-0000-4b53-8000-1d28000054a9 rootwait rw console=ttyS2,1500000 console=tty1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory net.ifnames=0 biosdevname=0 level=10 loglevel=10 selinux=0 crashkernel=384M-:128M systemd.mask=systemd-growfs@-.service rockchip.dmc_freq=528000 video=HDMI-A-1:1920x1080@60
 
 label l0r
 	menu label Linux kernel linux-6.1-stan-rkr5.1-kdev (rescue target)
 	linux vmlinuz-6.1-kdev
 	initrd initrd.img-6.1-kdev
-	fdt /dtb/rk3399-eaidk-linux.dtb
+	fdt /dtb/rk3399-eaidk-610.dtb
 	append root=PARTUUID=614e0000-0000-4b53-8000-1d28000054a9 rootwait rw console=ttyS2,1500000 console=tty1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory net.ifnames=0 biosdevname=0 level=10 loglevel=10 selinux=0 crashkernel=384M-:128M single
 
 label l2
